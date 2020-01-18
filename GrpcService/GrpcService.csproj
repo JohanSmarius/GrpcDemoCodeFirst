@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.24.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Protos\" />
     <Folder Include="Services\" />
   </ItemGroup>
