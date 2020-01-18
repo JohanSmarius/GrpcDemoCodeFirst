@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using static FinancialService.Protos.FinancialService;
 
 namespace GrpcService
 {
@@ -18,6 +19,8 @@ namespace GrpcService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddGrpcClient<FinancialServiceClient>(options =>
+                options.Address = new Uri("https://localhost:5003"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
