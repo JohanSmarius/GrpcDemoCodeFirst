@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Protos";
+
+package Shop;
+
+service ShopService {
+	rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+}
+
+message CreateCustomerRequest {
+	string name = 1;
+}
+
+message CreateCustomerResponse {
+	string name = 1;
+	int32 id = 2;
+}
