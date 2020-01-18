@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "FinancialService";
+
+package greet;
+
+service FinancialService {
+	rpc AddInvoice(AddInvoiceRequest) returns (AddInvoiceResponse);
+}
+
+message AddInvoiceRequest {
+	int32 customerId = 1;
+	double amount = 2;
+}
+
+message AddInvoiceResponse {
+
+}
