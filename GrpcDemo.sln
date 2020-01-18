@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopClient", "ShopClient\Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialService", "FinancialService\FinancialService.csproj", "{7B65DF19-CECF-493B-B405-E8F7FFE37700}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynchronisationService", "SynchronisationService\SynchronisationService.csproj", "{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7B65DF19-CECF-493B-B405-E8F7FFE37700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B65DF19-CECF-493B-B405-E8F7FFE37700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B65DF19-CECF-493B-B405-E8F7FFE37700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
