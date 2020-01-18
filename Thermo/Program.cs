@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using SynchronisationService.Protos;
 using static SynchronisationService.Protos.SynchronisationService;
 
@@ -12,13 +13,18 @@ namespace Thermo
     {
         static async Task Main(string[] args)
         {
+            int clientId = new Random().Next(100);
+
             Console.WriteLine("Hello World!");
 
             var channel = GrpcChannel.ForAddress("https://localhost:5005");
 
             var client = new SynchronisationServiceClient(channel);
 
-            using (var call = client.AddTemperatureReading())
+            var metaData = new Metadata();
+            metaData.Add("ClientID", clientId.ToString());
+
+            using (var call = client.AddTemperatureReading(metaData))
             {
                 var timer = new System.Timers.Timer();
                 var randomizer = new Random(Int32.MaxValue);
