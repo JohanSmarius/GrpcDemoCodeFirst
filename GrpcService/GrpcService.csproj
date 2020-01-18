@@ -9,4 +9,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.26.0" />
+  </ItemGroup>
+
 </Project>
