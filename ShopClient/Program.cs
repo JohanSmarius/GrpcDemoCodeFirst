@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Grpc.Net.Client;
 using GrpcService.Protos;
 
@@ -18,6 +19,8 @@ namespace ShopClient
             };
 
             var response = client.CreateCustomer(request);
+
+            
 
             Console.WriteLine($"Created {response.Name} with id {response.Id}");
             Console.ReadLine();
