@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Protos";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+
+package Shop;
+
+service ShopService {
+	rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+	rpc AddOrder(CreateOrder) returns (google.protobuf.Empty);
+}
+
+message CreateCustomerRequest {
+	string name = 1;
+}
+
+message CreateCustomerResponse {
+	string name = 1;
+	int32 id = 2;
+}
+
+enum CustomerType {
+	Error = 0;
+	Private = 1;
+	Corporate = 2;
+}
+
+message CreateOrder {
+	int32 customer = 1;
+	CustomerType type = 2;
+	google.protobuf.Timestamp orderedAt = 3; 
+	repeated CreateOrderLine orderLines = 4;
+}
+
+message CreateOrderLine {
+	int32 productId = 1;
+	int32 quantity = 2;
+	int32 price = 3;
+}
+
