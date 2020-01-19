@@ -1,6 +1,5 @@
 ﻿using Grpc.Net.Client;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
@@ -15,7 +14,7 @@ namespace Thermo
         {
             int clientId = new Random().Next(100);
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine($"My Id = {clientId}");
 
             var channel = GrpcChannel.ForAddress("https://localhost:5005");
 
@@ -43,7 +42,10 @@ namespace Thermo
 
                 timer.Start();
 
+                Console.WriteLine("Press <enter> to stop sending data");
                 var shouldEnd = Console.ReadLine();
+
+                timer.Stop();
 
                 await call.RequestStream.CompleteAsync();
             }

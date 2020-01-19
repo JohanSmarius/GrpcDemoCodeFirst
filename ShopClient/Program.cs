@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using GrpcService.Protos;
