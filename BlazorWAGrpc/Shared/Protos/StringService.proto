@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "BlazorWAGrpc.Server.Protos";
+
+service StringService {
+	rpc ReverseString(StringReverseRequest) returns (.StringReverseResponse);
+}
+
+message StringReverseRequest {
+	string original = 1;
+}
+
+message StringReverseResponse {
+	string reversed = 1;
+}

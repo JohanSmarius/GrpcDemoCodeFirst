@@ -1,0 +1,46 @@
+﻿@page "/"
+
+
+@using BlazorWAGrpc.Server.Protos
+@using StringService = BlazorWAGrpc.Server.Protos.StringService
+
+@inject StringService.StringServiceClient StringServiceClient
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div>
+    <span>Enter your text</span>
+    <input type="text" @bind="original" />
+
+    <button @onclick="Reverse">Reverse in gRPC server</button>
+    <span>@reversed</span>
+
+</div>
+
+
+@code
+{
+    string original = "";
+    string reversed;
+
+    async Task Reverse()
+    {
+        var request = new StringReverseRequest()
+        {
+            Original = original
+        };
+
+        var result = await StringServiceClient.ReverseStringAsync(request);
+
+        reversed = result.Reversed;
+
+
+
+    }
+
+
+}
