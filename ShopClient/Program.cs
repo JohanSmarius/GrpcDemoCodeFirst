@@ -1,50 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
-using GrpcService.Protos;
+using ProtoBuf.Grpc.Client;
+using Shop.Contracts;
 
 namespace ShopClient
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var channel = GrpcChannel.ForAddress("https://localhost:5001");
-
-            var client = new ShopService.ShopServiceClient(channel);
+            using var channel = GrpcChannel.ForAddress("https://localhost:5001");
+            var shopService = channel.CreateGrpcService<IShopService>();
 
             var request = new CreateCustomerRequest
             {
-                Name = "Hello DotNED Saturday"
+                Name = "Hello SDN"
             };
 
-            var response = client.CreateCustomer(request);
+            var response = await shopService.CreateCustomer(request);
 
-            var orderLine1 = new CreateOrderLine()
+            var orderLine1 = new CreateOrderLineRequest()
             {
                 ProductId = 100,
                 Price = 10,
                 Quantity = 2
             };
 
-            var orderLine2 = new CreateOrderLine()
+            var orderLine2 = new CreateOrderLineRequest()
             {
                 ProductId = 200,
                 Price = 20,
                 Quantity = 3
             };
 
-            var order = new CreateOrder()
+            var order = new CreateOrderRequest()
             {
-                Customer = response.Id,
-                OrderedAt = Timestamp.FromDateTime(DateTime.UtcNow),
+                CustomerId = response.Id,
+                OrderedAt = DateTime.UtcNow
             };
 
-            order.OrderLines.Add(orderLine1);
-            order.OrderLines.Add(orderLine2);
+            var orderLines = new List<CreateOrderLineRequest>
+            {
+                new CreateOrderLineRequest()
+                {
+                    ProductId = 100,
+                    Price = 10,
+                    Quantity = 2
+                },
+                new CreateOrderLineRequest()
+                {
+                    ProductId = 200,
+                    Price = 20,
+                    Quantity = 3
+                }
+            };
 
-            client.AddOrder(order);
-            
+            order.OrderLines = orderLines;
+
+            shopService.AddOrder(order);
+
             Console.WriteLine($"Created {response.Name} with id {response.Id}");
             Console.ReadLine();
         }

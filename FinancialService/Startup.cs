@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProtoBuf.Grpc.Server;
 
 namespace FinancialService
 {
@@ -13,6 +14,7 @@ namespace FinancialService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddCodeFirstGrpc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,7 +29,7 @@ namespace FinancialService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<FinancialService.Services.FinancialService>();
+                endpoints.MapGrpcService<Services.FinancialService>();
 
                 endpoints.MapGet("/", async context =>
                 {

@@ -1,12 +1,11 @@
-﻿using FinancialService.Protos;
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using FinancialService.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace FinancialService.Services
 {
-    public class FinancialService : Protos.FinancialService.FinancialServiceBase
+    public class FinancialService : IFinancialService
     {
         private readonly ILogger<FinancialService> _logger;
 
@@ -15,11 +14,11 @@ namespace FinancialService.Services
             _logger = logger;
         }
 
-        public override Task<AddInvoiceResponse> AddInvoice(AddInvoiceRequest request, ServerCallContext context)
+        public ValueTask AddInvoice(AddInvoiceRequest request)
         {
             Console.WriteLine($"Added invoice for {request.CustomerId} for amount {request.Amount}");
 
-            return Task.FromResult(new AddInvoiceResponse());
+            return new ValueTask(Task.CompletedTask);
         }
     }
 }

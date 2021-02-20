@@ -1,27 +1,24 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using FinancialService.Protos;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
-using GrpcService.Protos;
+using FinancialService.Contracts;
+using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
-using static FinancialService.Protos.FinancialService;
+using ProtoBuf.Grpc.Client;
+using Shop.Contracts;
 
 namespace GrpcService.Services
 {
-    public class ShopService : Protos.ShopService.ShopServiceBase
+    public class ShopService : IShopService
     {
         private readonly ILogger<ShopService> _logger;
-        private readonly FinancialServiceClient _financialClient;
 
-        public ShopService(ILogger<ShopService> logger, FinancialServiceClient financialClient)
+        public ShopService(ILogger<ShopService> logger)
         {
             _logger = logger;
-            _financialClient = financialClient;
         }
 
-        public override Task<CreateCustomerResponse> CreateCustomer(CreateCustomerRequest request, ServerCallContext context)
+        public ValueTask<CreateCustomerResponse> CreateCustomer(CreateCustomerRequest request)
         {
             _logger.LogInformation("Received customer", null);
 
@@ -31,24 +28,26 @@ namespace GrpcService.Services
                 Name = request.Name
             };
 
-            return Task.FromResult(response);
+            return new ValueTask<CreateCustomerResponse>(response);
+
         }
 
-        public override async Task<Empty> AddOrder(CreateOrder request, ServerCallContext context)
+        public async ValueTask AddOrder(CreateOrderRequest request)
         {
-            Console.WriteLine($"Received order placed at {request.OrderedAt.ToDateTime().ToLongDateString()}");
+            Console.WriteLine($"Received order placed at {request.OrderedAt.ToLongDateString()}");
+
             foreach (var orderLine in request.OrderLines)
             {
                 Console.WriteLine($"Received {orderLine.ProductId}");
             }
-            
-            await _financialClient.AddInvoiceAsync(new AddInvoiceRequest
+
+            using var channel = GrpcChannel.ForAddress("https://localhost:5003");
+            var financialService = channel.CreateGrpcService<IFinancialService>();
+            await financialService.AddInvoice(new AddInvoiceRequest
             {
                 Amount = request.OrderLines.Sum(line => line.Price * line.Quantity),
-                CustomerId = request.Customer
+                CustomerId = request.CustomerId
             });
-
-            return new Empty();
         }
     }
 }
