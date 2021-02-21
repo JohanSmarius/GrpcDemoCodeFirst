@@ -3,8 +3,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ProtoBuf.Grpc.Server;
+using services = WeatherForecastService.Services;
 
-namespace SynchronisationService
+namespace WeatherForecastService
 {
     public class Startup
     {
@@ -12,7 +18,7 @@ namespace SynchronisationService
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddGrpc();
+            services.AddCodeFirstGrpc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,7 +33,7 @@ namespace SynchronisationService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<SynchronisationService.Services.SynchronisationService>();
+                endpoints.MapGrpcService<services.WeatherForecastStreamingService>();
 
                 endpoints.MapGet("/", async context =>
                 {

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "WeatherForecastService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "http://localhost:6000;https://localhost:6001"
+    }
+  }
+}

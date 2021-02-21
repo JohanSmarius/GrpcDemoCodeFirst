@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopClient", "ShopClient\Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialService", "FinancialService\FinancialService.csproj", "{7B65DF19-CECF-493B-B405-E8F7FFE37700}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SynchronisationService", "SynchronisationService\SynchronisationService.csproj", "{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Contracts", "Shop.Contracts\Shop.Contracts.csproj", "{B815C163-88AD-47B8-A31D-EFF8C5E0F744}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thermo", "Thermo\Thermo.csproj", "{F3A6BDE4-B88E-4B5E-845F-BB984CEEC719}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialService.Contracts", "FinancialService.Contracts\FinancialService.Contracts.csproj", "{5DB308B2-F630-4E3E-924E-74C7DC08CCBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Contracts", "Shop.Contracts\Shop.Contracts.csproj", "{B815C163-88AD-47B8-A31D-EFF8C5E0F744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecaseStreamingService.Contracts", "WeatherForecaseStreamingService\WeatherForecaseStreamingService.Contracts.csproj", "{525360FC-AA2A-4F32-B52E-5E590C91B2B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialService.Contracts", "FinancialService.Contracts\FinancialService.Contracts.csproj", "{5DB308B2-F630-4E3E-924E-74C7DC08CCBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastClient", "WeatherForecastClient\WeatherForecastClient.csproj", "{013E3CF7-F6AB-4C63-A021-29C04C1DDA0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastService", "WeatherForecastService\WeatherForecastService.csproj", "{580E919A-D9B1-462B-BE32-2897822FC9FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +37,6 @@ Global
 		{7B65DF19-CECF-493B-B405-E8F7FFE37700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B65DF19-CECF-493B-B405-E8F7FFE37700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B65DF19-CECF-493B-B405-E8F7FFE37700}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B28B4FFE-D031-4CE6-B349-1EB1645C7EF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3A6BDE4-B88E-4B5E-845F-BB984CEEC719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3A6BDE4-B88E-4B5E-845F-BB984CEEC719}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3A6BDE4-B88E-4B5E-845F-BB984CEEC719}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3A6BDE4-B88E-4B5E-845F-BB984CEEC719}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B815C163-88AD-47B8-A31D-EFF8C5E0F744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B815C163-88AD-47B8-A31D-EFF8C5E0F744}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B815C163-88AD-47B8-A31D-EFF8C5E0F744}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +45,18 @@ Global
 		{5DB308B2-F630-4E3E-924E-74C7DC08CCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DB308B2-F630-4E3E-924E-74C7DC08CCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DB308B2-F630-4E3E-924E-74C7DC08CCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525360FC-AA2A-4F32-B52E-5E590C91B2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525360FC-AA2A-4F32-B52E-5E590C91B2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525360FC-AA2A-4F32-B52E-5E590C91B2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525360FC-AA2A-4F32-B52E-5E590C91B2B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013E3CF7-F6AB-4C63-A021-29C04C1DDA0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013E3CF7-F6AB-4C63-A021-29C04C1DDA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013E3CF7-F6AB-4C63-A021-29C04C1DDA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013E3CF7-F6AB-4C63-A021-29C04C1DDA0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580E919A-D9B1-462B-BE32-2897822FC9FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580E919A-D9B1-462B-BE32-2897822FC9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580E919A-D9B1-462B-BE32-2897822FC9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580E919A-D9B1-462B-BE32-2897822FC9FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
