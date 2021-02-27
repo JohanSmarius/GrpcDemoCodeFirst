@@ -20,12 +20,11 @@ namespace WeatherForecastClient
 
             try
             {
-
                 using var channel = GrpcChannel.ForAddress("https://localhost:6001");
                 var weatherForecastService = channel.CreateGrpcService<IWeatherForecastStreamingService>();
 
                 await foreach (var weatherData in weatherForecastService.GetWeatherForecastStream(
-                    context: _cancellationTokenSource.Token))
+                    context: _cancellationTokenSource.Token).WithCancellation(_cancellationTokenSource.Token))
                 {
                     Console.WriteLine(
                         $"Forecast {terminateDemo} {weatherData.Date.ToLongDateString()} {weatherData.Temperature} {weatherData.Summary}");
@@ -42,7 +41,6 @@ namespace WeatherForecastClient
             {
                 // Save to ignore
             }
-
         }
     }
 }

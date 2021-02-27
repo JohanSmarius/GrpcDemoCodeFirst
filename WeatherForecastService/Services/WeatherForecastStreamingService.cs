@@ -19,7 +19,8 @@ namespace WeatherForecastService.Services
         public IAsyncEnumerable<WeatherForecastStreamElement> GetWeatherForecastStream(CallContext context = default)
             => GetWeatherForecastStream(context.CancellationToken);
 
-        private async IAsyncEnumerable<WeatherForecastStreamElement> GetWeatherForecastStream([EnumeratorCancellation]CancellationToken cancellationToken)
+        private async IAsyncEnumerable<WeatherForecastStreamElement> GetWeatherForecastStream(
+            [EnumeratorCancellation]CancellationToken cancellationToken)
         {
             var randomGenerator = new Random();
             var index = 0;
