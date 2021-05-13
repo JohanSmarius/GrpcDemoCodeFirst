@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "GrpcDemo.sln",
+    "projects": [
+      "WeatherForecaseStreamingService\\WeatherForecaseStreamingService.Contracts.csproj",
+      "WeatherForecastClient\\WeatherForecastClient.csproj",
+      "WeatherForecastService\\WeatherForecastService.csproj"
+    ]
+  }
+}
